@@ -1,0 +1,27 @@
+md-sidenav {
+  width: 250px;
+}
+
+material-app, md-sidenav-container {
+  margin: 0;
+  width: 100%;
+  height: calc(100% - 67px);
+  background-color: transparent;
+}
+
+.fx-sidenav {
+  background: #293848;
+  &>div {
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    &:hover{
+      background: coral;
+      -webkit-transition: 0.3s linear;
+      -moz-transition: 0.3s linear;
+      -o-transition: 0.3s linear;
+      transition: 0.3s linear;
+    }
+  }
+}
+
