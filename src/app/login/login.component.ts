@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import * as jQuery from 'jquery';
 import { AppService } from '../app.service';
 
 @Component({
     selector: 'login',
     templateUrl: './login.html',
-    styleUrls: ['login.scss']
+    styleUrls: ['login.scss'],
+    //encapsulation: ViewEncapsulation.Native
 })
 export class LoginComponent implements OnInit {
 

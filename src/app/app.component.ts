@@ -21,6 +21,7 @@ export class AppComponent {
 
   nav(route) {
         this.router.navigateByUrl(`/${route}`);
+        this.sidenav.close()
     }
 
 }

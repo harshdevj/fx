@@ -7,14 +7,18 @@ material-app, md-sidenav-container {
   width: 100%;
   height: calc(100% - 67px);
   background-color: transparent;
+  color: #f1f1f1;
 }
 
 .fx-sidenav {
   background: #293848;
   &>div {
+    color: #f1f1f1;
     text-align: center;
     padding: 20px;
     cursor: pointer;
+    border-top: 1px solid #696969;
+
     &:hover{
       background: coral;
       -webkit-transition: 0.3s linear;
