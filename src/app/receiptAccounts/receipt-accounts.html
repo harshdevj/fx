@@ -1,1 +1,59 @@
 <h2>Receipt Account</h2>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="accName" class="col-sm-3 control-label">Name of account holder</label>
+        <div class="col-sm-9">
+            <input type="email" class="form-control" id="accName" placeholder="Name of account holder">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="routingNumber" class="col-sm-3 control-label">Routing Number</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="routingNumber" placeholder="Routing Number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="accountNumber" class="col-sm-3 control-label">Account Number</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="accountNumber" placeholder="Account Number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Account Type</label>
+        <div class=" col-sm-9">
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">Checking
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">Saving
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" class="btn btn-default">Add Bank Account Name</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Sr#</th>
+            <th>Account Name</th>
+            <th>Account #</th>
+            <th>Account Type</th>
+            <th>Routing #</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let acc of accountList">
+            <th>{{acc.srNo}}</th>
+            <th>{{acc.accName}}</th>
+            <th>{{acc.accNum}}</th>
+            <th>{{acc.accType}}</th>
+            <th>{{acc.routingNum}}</th>
+        </tr>
+    </tbody>
+</table>

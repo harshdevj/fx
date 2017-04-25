@@ -1,1 +1,30 @@
-<h2>review-approve</h2>
+<h2>Approve/Reject</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Transaction</th>
+            <th>Payment Account #</th>
+            <th>sent Amount</th>
+            <th>Rate</th>
+            <th>Receive Account #</th>
+            <th>Receive Amount</th>
+            <th>Status</th>
+            <th>Created on</th>
+            <th>Approved/Rejected on</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tr of transList">
+            <th>{{tr.trNo}}</th>
+            <th>{{tr.payAcc}}</th>
+            <th>{{tr.sentAmt}}</th>
+            <th>{{tr.rate}}</th>
+            <th>{{tr.recAccNum}}</th>
+            <th>{{tr.recAmt}}</th>
+            <th>{{tr.status}}</th>
+            <th>{{tr.createdOn}}</th>
+            <th>{{tr.approveRejected}}</th>
+        </tr>
+    </tbody>
+</table>
