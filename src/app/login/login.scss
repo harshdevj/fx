@@ -26,14 +26,15 @@ flex: 1;
 }
 
 .app-name {
-    text-align: center;
     line-height: 67px;
     color: #f1f1f1;
     font-size: 2rem;
+    display: flex;
+    align-items: center;
 }
 
 h2 {
-  padding: 20px;
+  padding: 14px;
   color: #ecf0f1;
   float: right;
 }

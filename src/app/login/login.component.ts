@@ -1,6 +1,8 @@
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import * as jQuery from 'jquery';
 import { AppService } from '../app.service';
+import { AuthenticationService } from '../common/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'login',
@@ -10,8 +12,11 @@ import { AppService } from '../app.service';
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private appService: AppService) {
+    private eMail = '';
+    private pwd = '';
 
+    constructor(private appService: AppService, private auth: AuthenticationService, private router: Router) {
+        
     }
 
     ngOnInit() {
@@ -48,6 +53,15 @@ export class LoginComponent implements OnInit {
                 jQuery('#registerform').removeClass('green');
             }
         });
+    }
+
+    login(email, password) {
+        this.auth.login(email, password)
+        .subscribe(resp => {
+            this.eMail = '';
+            this.pwd = '';
+            this.toggleNav();
+        })
     }
 
     toggleNav() {

@@ -10,3 +10,7 @@ body {
   font-family: Sans-serif;
   background: #2c3e50;
 }
+
+.table-hover > tbody > tr:hover {
+    background-color: rgba(245, 245, 245, 0.18);
+}

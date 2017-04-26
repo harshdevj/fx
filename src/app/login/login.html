@@ -1,21 +1,30 @@
 <div id="wrap">
     <div id="regbar">
-        <div class="app-name" (click)="toggleNav()">
-            Foreign Exchange
+        <div class="app-name">
+            Foreign Exchange <button md-icon-button (click)="toggleNav()" *ngIf="auth.isUserLoggegIn"><md-icon>list</md-icon></button>
         </div>
         <div id="navthing">
-            <h2><a href="javascript:void(0)" id="loginform">Login</a> | <a href="javascript:void(0)" id="registerform">Register</a></h2>
-            <div class="login">
+            <h2>
+                <span [hidden]="auth.isUserLoggegIn">
+                    <a href="javascript:void(0)" id="loginform">Login</a> | <a href="javascript:void(0)" id="registerform">Register</a>
+                </span>
+                <span *ngIf="auth.isUserLoggegIn" style="display: flex;align-items: center">
+                    <a href="javascript:void(0)" id="loginform">Welcome {{auth.userDetails.lastName}}, {{auth.userDetails.firstName}}</a><button md-icon-button (click)="auth.logout();appService.close();router.navigate(['/home'])" *ngIf="auth.isUserLoggegIn"><md-icon>exit_to_app</md-icon></button>
+                </span>
+            </h2>
+            <div class="login" [style.display]="auth.isUserLoggegIn?'none':'block'">
                 <div class="arrow-up"></div>
                 <div class="formholder">
                     <div class="randompad">
-                        <fieldset>
-                            <label name="email">Email</label>
-                            <input type="email" value="example@example.com" />
-                            <label name="password">Password</label>
-                            <input type="password" />
-                            <input type="submit" value="Login" />
-                        </fieldset>
+                        <form #loginForm="ngForm" (ngSubmit)="login(email.value, password.value)">
+                            <fieldset>
+                                <label name="email">Email</label>
+                                <input type="email" name="email" #email="ngModel" [(ngModel)]="eMail" value="example@example.com"  required/>
+                                <label name="password">Password{{loginForm.form.valid}}</label>
+                                <input type="password" name="password" #password="ngModel" [(ngModel)]="pwd"  required/>
+                                <input [disabled]="!loginForm.form.valid" [style.background]="loginForm.form.valid?'#1abc9c':'red'" type="submit" value="Login" />
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
             </div>
