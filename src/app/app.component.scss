@@ -9,7 +9,10 @@ material-app, md-sidenav-container {
   background-color: transparent;
   color: #f1f1f1;
 }
-
+.example-sidenav-content {
+  padding-left: 10px;
+ padding-right: 10px;
+}
 .fx-sidenav {
   background: #293848;
   &>div {
