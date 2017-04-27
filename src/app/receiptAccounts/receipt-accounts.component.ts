@@ -7,7 +7,7 @@ import { ReceiptAccountService } from './receipt-account.service';
 })
 export class ReceiptAccountsComponent implements OnInit {
 
-    private accountList = [ ];
+    accountList = [ ];
 
     constructor(private recAcc: ReceiptAccountService) {}
 

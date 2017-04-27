@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AppService {
-    private _sidenav;
+    _sidenav;
 
     public set sidenav(value) {
         this._sidenav = value;

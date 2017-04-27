@@ -6,7 +6,7 @@ import { TransactionHistoryService } from './trans-history.service';
 })
 export class TransactionHistoryComponent implements OnInit {
 
-    private transList = [];
+    transList = [];
 
     constructor(private trHist: TransactionHistoryService) {
     }

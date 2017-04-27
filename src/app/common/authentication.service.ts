@@ -4,8 +4,8 @@ import { Http } from '@angular/http';
 @Injectable()
 export class AuthenticationService {
 
-    private _isUserLoggegIn = false;
-    private _userDetails = {};
+    _isUserLoggegIn = false;
+    _userDetails = {};
 
     public get isUserLoggegIn() {
         return this._isUserLoggegIn;

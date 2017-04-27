@@ -6,7 +6,7 @@ import { PaymentAmountService } from './payment-amount.service';
 })
 export class PaymentAmountComponent implements OnInit {
 
-    private accountList = [];
+    accountList = [];
 
     constructor(private payAmt: PaymentAmountService) {}
 

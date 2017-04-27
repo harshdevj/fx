@@ -1,0 +1,9 @@
+{
+    "success": true,
+    "errorMessage": null,
+    "firstName": "John",
+    "lastName": "Miller",
+    "entitlement": [
+        "ADMIN"
+    ]
+}

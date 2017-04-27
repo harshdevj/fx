@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-    private eMail = '';
-    private pwd = '';
+    eMail = '';
+    pwd = '';
 
-    constructor(private appService: AppService, private auth: AuthenticationService, private router: Router) {
+    constructor(private appService: AppService, public auth: AuthenticationService, private router: Router) {
         
     }
 
