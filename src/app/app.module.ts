@@ -24,7 +24,7 @@ import { PaymentAmountService } from './paymentAmount/payment-amount.service';
 import { ReviewApproveService } from './reviewApprove/review-approve.service';
 
 @Injectable()
-class CanActivateRoute implements CanActivate {
+export class CanActivateRoute implements CanActivate {
   constructor(private router: Router, private auth: AuthenticationService) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.auth.isUserLoggegIn) {
@@ -34,7 +34,7 @@ class CanActivateRoute implements CanActivate {
   }
 }
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'index', component: IndexComponent, canActivate: [CanActivateRoute] },
   { path: 'receiptAccounts', component: ReceiptAccountsComponent, canActivate: [CanActivateRoute] },
