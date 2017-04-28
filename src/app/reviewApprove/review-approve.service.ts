@@ -9,7 +9,23 @@ export class ReviewApproveService {
     }
 
     public getApproveReject() {
-        return this.http.get(`assets/approveReject.json`)
+        return this.http.get('assets/approveReject.json')
+            .map(resp => {
+                let json = resp.json();
+                return json;
+            });
+    }
+
+    approve(rec) {
+        return this.http.post('assets/approveReject.json', rec)
+            .map(resp => {
+                let json = resp.json();
+                return json;
+            });
+    }
+
+    reject(rec) {
+        return this.http.post('assets/approveReject.json', rec)
             .map(resp => {
                 let json = resp.json();
                 return json;

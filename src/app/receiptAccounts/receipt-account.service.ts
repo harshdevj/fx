@@ -16,4 +16,12 @@ export class ReceiptAccountService {
             });
     }
 
+    addBankAcc(values) {
+        return this.http.post('addBankAcc', values)
+            .map(resp => {
+                let json = resp.json();
+                return json;
+            });
+    }
+
 }

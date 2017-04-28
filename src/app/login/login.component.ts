@@ -64,6 +64,10 @@ export class LoginComponent implements OnInit {
         })
     }
 
+    register(fName, lName, rEmail, rPwd) {
+
+    }
+
     toggleNav() {
         this.appService.toggle();
     }

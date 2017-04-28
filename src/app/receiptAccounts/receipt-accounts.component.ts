@@ -7,13 +7,21 @@ import { ReceiptAccountService } from './receipt-account.service';
 })
 export class ReceiptAccountsComponent implements OnInit {
 
-    accountList = [ ];
+    accountList = [];
 
-    constructor(private recAcc: ReceiptAccountService) {}
+    constructor(private recAcc: ReceiptAccountService) { }
 
     ngOnInit() {
         this.recAcc.getReceiptAccount()
             .subscribe(resp => this.accountList = resp);
+    }
+
+    addBankAcc(values) {
+        this.recAcc.addBankAcc(values)
+            .subscribe(resp => {
+                this.recAcc.getReceiptAccount()
+                    .subscribe(resp => this.accountList = resp);
+            });
     }
 
 }

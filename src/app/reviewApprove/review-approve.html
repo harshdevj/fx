@@ -12,6 +12,7 @@
             <th>Status</th>
             <th>Created on</th>
             <th>Approved/Rejected on</th>
+            <th>Approved/Rejected</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,7 @@
             <th>{{tr.status}}</th>
             <th>{{tr.createdOn}}</th>
             <th>{{tr.approveRejected}}</th>
+            <th class="approve-reject"><i class="material-icons approve" (click)="approve(tr)">thumb_up</i>&nbsp;&nbsp;&nbsp;<i class="material-icons reject" (click)="reject(tr)">thumb_down</i></th>
         </tr>
     </tbody>
 </table>

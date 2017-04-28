@@ -19,8 +19,8 @@
                         <form #loginForm="ngForm" (ngSubmit)="login(email.value, password.value)">
                             <fieldset>
                                 <label name="email">Email</label>
-                                <input type="email" name="email" #email="ngModel" [(ngModel)]="eMail" value="example@example.com"  required/>
-                                <label name="password">Password{{loginForm.form.valid}}</label>
+                                <input type="email" name="email" #email="ngModel" [(ngModel)]="eMail" value="example@example.com" pattern=".+@.+" required/>
+                                <label name="password">Password</label>
                                 <input type="password" name="password" #password="ngModel" [(ngModel)]="pwd"  required/>
                                 <input [disabled]="!loginForm.form.valid" [style.background]="loginForm.form.valid?'#1abc9c':'red'" type="submit" value="Login" />
                             </fieldset>
@@ -32,15 +32,19 @@
                 <div class="arrow-up"></div>
                 <div class="formholder">
                     <div class="randompad">
-                        <fieldset>
-                            <label name="name">Name</label>
-                            <input type="text" name="name" value="" />
-                            <label name="email">Email</label>
-                            <input type="email" value="example@example.com" />
-                            <label name="password">Password</label>
-                            <input type="password" />
-                            <input type="submit" value="Register" />
-                        </fieldset>
+                        <form #registerForm="ngForm" (ngSubmit)="register(fName.value, lName.value, rEmail.value, rPwd.value)">
+                            <fieldset>
+                                <label name="name">First Name</label>
+                                <input type="text" name="fname" #fname="ngModel" [(ngModel)]="fName" name="fname" value="" required />
+                                <label name="name">Last Name</label>
+                                <input type="text" name="lname" #lname="ngModel" [(ngModel)]="lName" name="lname" value="" required />
+                                <label name="email">Email</label>
+                                <input type="email" name="remail" #remail="ngModel" [(ngModel)]="rEmail" value="example@example.com" pattern=".+@.+" required />
+                                <label name="password">Password</label>
+                                <input type="password" name="rpwd" #rpwd="ngModel" [(ngModel)]="rPwd" required />
+                                <input type="submit" value="Register" [disabled]="!registerForm.form.valid" [style.background]="registerForm.form.valid?'#1abc9c':'red'" />
+                            </fieldset>
+                        </form>
                     </div>
                 </div>
             </div>

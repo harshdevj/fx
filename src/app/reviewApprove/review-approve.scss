@@ -1,0 +1,11 @@
+.approve-reject {
+    &>i {
+        cursor: pointer;
+    }
+    &>i.approve:hover {
+        color: green;
+    }
+    &>i.reject:hover {
+        color: darkred;
+    }
+}

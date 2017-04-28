@@ -15,4 +15,20 @@ export class ReviewApproveComponent implements OnInit {
             .subscribe(resp => this.transList = resp);
     }
 
+    approve(rec) {
+        this.revApp.approve(rec)
+            .subscribe(resp => {
+                this.revApp.getApproveReject()
+                    .subscribe(resp => this.transList = resp);
+            });
+    }
+
+    reject(rec) {
+        this.revApp.reject(rec)
+            .subscribe(resp => {
+                this.revApp.getApproveReject()
+                    .subscribe(resp => this.transList = resp);
+            });
+    }
+
 }

@@ -1,33 +1,42 @@
 <h2>Send money</h2>
 
-<form class="form-horizontal">
+<form class="form-horizontal" #sendMoneyForm="ngForm" (ngSubmit)="sendMoney(sendMoneyForm.value)" novalidate>
     <div class="form-group">
         <label for="receiptAc" class="col-sm-2 control-label">Receipt Account</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="receiptAc" placeholder="Receipt Account">
+            <select class="form-control" id="receiptAc" name="receiptAc" #receiptAc="ngModel" placeholder="Receipt Account" [(ngModel)]="recAcc" required>
+                <option *ngFor="let a of receiptAccountList" [ngValue]="a">{{a}}</option>
+            </select>
         </div>
     </div>
     <div class="form-group">
-        <label for="paymentAc" class="col-sm-2 control-label">Receipt Account</label>
+        <label for="paymentAc" class="col-sm-2 control-label">Payment Account</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="paymentAc" placeholder="Receipt Account">
+            <select class="form-control" id="paymentAc" name="paymentAc" #paymentAc="ngModel" placeholder="Payment Account" [(ngModel)]="payAcc" required>
+                <option *ngFor="let a of paymentAccountList" [ngValue]="a">{{a}}</option>
+            </select>
         </div>
     </div>
     <div class="form-group">
         <label for="amount" class="col-sm-2 control-label">Amount</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="amount" placeholder="Amount">
+            <input type="text" class="form-control" id="amount" name="amount" #amount="ngModel" placeholder="Amount" [(ngModel)]="amt" required>
         </div>
     </div>
     <div class="form-group">
         <label for="currency" class="col-sm-2 control-label">Currency</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="currency" placeholder="Currency">
+            <select class="form-control" id="currency" name="currency" #currency="ngModel" placeholder="Currency" [(ngModel)]="ccy" required>
+                <option *ngFor="let c of ccys" [ngValue]="c">{{getKey(c)}}</option>
+            </select>
+            <div *ngIf="ccy">
+                Rate: $1 = {{getValue(ccy)}}
+            </div>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-6">
-            <button type="submit" class="btn btn-default">Send Money</button>
+            <button type="submit" [disabled]="!sendMoneyForm.form.valid" class="btn btn-default">Send Money</button>
         </div>
     </div>
 </form>

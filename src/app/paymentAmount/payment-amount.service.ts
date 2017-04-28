@@ -16,4 +16,12 @@ export class PaymentAmountService {
             });
     }
 
+    addPayBankAcc(values) {
+        return this.http.post('addPayBankAcc', values)
+            .map(resp => {
+                let json = resp.json();
+                return json;
+            });
+    }
+
 }

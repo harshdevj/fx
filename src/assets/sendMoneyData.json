@@ -1,0 +1,13 @@
+{
+    "receiptAccountList": ["1232121 - Bank1", "23424324 - Bank2", "23432432 - Bank3"],
+    "paymentAccountList": ["1232121 - Bank4", "23424324 - Bank5", "23432432 - Bank6"],
+    "ccys": [
+        {"USD": 1.0},
+        {"INR": 64.10},
+        {"EUR": 0.92},
+        {"GBP": 0.77},
+        {"AUD": 1.33},
+        {"CAD": 1.45},
+        {"JPY": 111.2}
+    ]
+}

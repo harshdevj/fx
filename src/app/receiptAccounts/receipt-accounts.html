@@ -1,38 +1,38 @@
 <h2>Receipt Account</h2>
 
-<form class="form-horizontal">
+<form class="form-horizontal" #receiptAccForm="ngForm" (ngSubmit)="addBankAcc(receiptAccForm.value)">
     <div class="form-group">
         <label for="accName" class="col-sm-3 control-label">Name of account holder</label>
         <div class="col-sm-9">
-            <input type="email" class="form-control" id="accName" placeholder="Name of account holder">
+            <input type="email" class="form-control" id="accName" name="accName" #accName="ngModel" [(ngModel)]="aName" required placeholder="Name of account holder">
         </div>
     </div>
     <div class="form-group">
         <label for="routingNumber" class="col-sm-3 control-label">Routing Number</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="routingNumber" placeholder="Routing Number">
+            <input type="text" class="form-control" id="routingNumber" name="rNum" #rNum="ngModel" [(ngModel)]="rno" required placeholder="Routing Number">
         </div>
     </div>
     <div class="form-group">
         <label for="accountNumber" class="col-sm-3 control-label">Account Number</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="accountNumber" placeholder="Account Number">
+            <input type="text" class="form-control" id="accountNumber" name="accNum" #accNum="ngModel" [(ngModel)]="aNum" required placeholder="Account Number">
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-3 control-label">Account Type</label>
         <div class=" col-sm-9">
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">Checking
+                <input type="radio" #checking="ngModel" [(ngModel)]="ch" name="accType" id="inlineRadio1" value="Checking">Checking
             </label>
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">Saving
+                <input type="radio" #saving="ngModel" [(ngModel)]="sav" name="accType" id="inlineRadio2" value="Saving">Saving
             </label>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-9">
-            <button type="submit" class="btn btn-default">Add Bank Account Name</button>
+            <button type="submit" [disabled]="!(receiptAccForm.form.valid && (ch || sav))" class="btn btn-default">Add Bank Account</button>
         </div>
     </div>
 </form>
