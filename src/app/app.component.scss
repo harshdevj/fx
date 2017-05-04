@@ -5,13 +5,35 @@ md-sidenav {
 material-app, md-sidenav-container {
   margin: 0;
   width: 100%;
-  height: calc(100% - 67px);
+  height: calc(100% - 90px);
   background-color: transparent;
   color: #f1f1f1;
 }
+.task-bar {
+    height: 22px;
+    width: 100%;
+    //background: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & a {
+      color: #f1f1f1;
+      padding-right: 6px;
+    }
+
+    background: #34495e; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#34495e, rgba(255, 255, 255, 0.2), #34495e); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#34495e, rgba(255, 255, 255, 0.2), #34495e); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#34495e, rgba(255, 255, 255, 0.2), #34495e); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#34495e, rgba(255, 255, 255, 0.2), #34495e); /* Standard syntax */
+}
 .example-sidenav-content {
   padding-left: 10px;
- padding-right: 10px;
+  padding-right: 10px;
+  height: calc(100% - 20px);
 }
 .fx-sidenav {
   background: #293848;
