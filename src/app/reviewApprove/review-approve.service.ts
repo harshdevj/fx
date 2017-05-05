@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { global } from '../global';
 
 @Injectable()
 export class ReviewApproveService {
@@ -17,14 +18,14 @@ export class ReviewApproveService {
     }
 
     approve(rec) {
-        return this.http.post('/fx/service/money/approveTransaction', rec)
+        return this.http.post(global.CONTEXT + 'rest/service/money/approveTransaction', rec)
                 .map(resp => {
                     return resp.json();
                 });
     }
 
     reject(rec) {
-        return this.http.post('/fx/service/money/rejectTransaction', rec)
+        return this.http.post(global.CONTEXT + 'rest/service/money/rejectTransaction', rec)
                 .map(resp => {
                     return resp.json();
                 });

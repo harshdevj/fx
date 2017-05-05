@@ -76,8 +76,6 @@ export class LoginComponent implements OnInit {
     register(fName, lName, rEmail, rPwd) {
         this.auth.register(fName, lName, rEmail, rPwd)
             .subscribe(resp => {
-                //this.eMail = '';
-                //this.pwd = '';
                 this.dialogRef = this.dialog.open(Dialog);
                 if (resp.success) {
                     this.dialogRef.componentInstance.title = "Success";

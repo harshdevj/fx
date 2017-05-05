@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { global } from '../global';
 
 @Injectable()
 export class SendMoneyService {
@@ -8,14 +9,14 @@ export class SendMoneyService {
     }
 
     getSendMoneyData() {
-        return this.http.post('/fx/service/money/getMoneyData', {})
+        return this.http.post(global.CONTEXT + 'rest/service/money/getMoneyData', {})
                 .map(resp => {
                     return resp.json();
                 });
     }
 
     sendMoney(rec) {
-        return this.http.post('/fx/service/money/sendMoney', {
+        return this.http.post(global.CONTEXT + 'rest/service/money/sendMoney', {
             requestedUserId: rec.userId,
             payAccount: rec.paymentAc,
             recAccount: rec.receiptAc,

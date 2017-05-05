@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { global } from '../global';
 
 @Injectable()
 export class AuthenticationService {
@@ -21,7 +22,7 @@ export class AuthenticationService {
     }
 
     public login(userName:string, password: string) {
-        return this.http.post('/fx/service/user/login', {email: userName, userPwd: password})
+        return this.http.post(global.CONTEXT + 'rest/service/user/login', {email: userName, userPwd: password})
                 .map(resp => {
                     let json = resp.json();
                     if (json.success) {
@@ -33,7 +34,7 @@ export class AuthenticationService {
     }
 
     public register(fName, lName, rEmail, rPwd) {
-        return this.http.post('/fx/service/user/register', { email: rEmail, userName: (fName + ' ' + lName), userPwd: rPwd, role: 'user' })
+        return this.http.post(global.CONTEXT + 'rest/service/user/register', { email: rEmail, userName: (fName + ' ' + lName), userPwd: rPwd, role: 'user' })
                 .map(resp => {
                     return resp.json();
                 });

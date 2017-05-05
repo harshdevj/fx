@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { global } from '../global';
 
 @Injectable()
 export class TransactionHistoryService {
@@ -9,7 +10,7 @@ export class TransactionHistoryService {
     }
 
     public getTransactionHistory() {
-        return this.http.post('/fx/service/money/transactionHistory', {})
+        return this.http.post(global.CONTEXT + 'rest/service/money/transactionHistory', {})
                 .map(resp => {
                     return resp.json();
                 });
