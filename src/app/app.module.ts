@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdDialogModule, MdButtonModule } from '@angular/material';
 import { ReceiptAccountsComponent } from './receiptAccounts/receipt-accounts.component';
 import { PaymentAmountComponent } from './paymentAmount/payment-amount.component';
 import { SendMoneyComponent } from './sendMoney/send-money.component';
 import { TransactionHistoryComponent } from './transactionHistory/transaction-history.component';
 import { ReviewApproveComponent } from './reviewApprove/review-approve.component';
+import { Dialog } from './common/dialog.component';
 import { AuthenticationService } from './common/authentication.service';
 import { AppComponent } from './app.component';
 import { TransactionHistoryService } from './transactionHistory/trans-history.service';
@@ -54,7 +55,7 @@ export const appRoutes: Routes = [
   declarations: [
     AppComponent, PageNotFoundComponent, IndexComponent, LoginComponent, HomeComponent,
     ReceiptAccountsComponent, PaymentAmountComponent, SendMoneyComponent, TransactionHistoryComponent,
-    ReviewApproveComponent
+    ReviewApproveComponent, Dialog
   ],
   imports: [
     BrowserModule,
@@ -62,8 +63,11 @@ export const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     BrowserAnimationsModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    MdDialogModule, 
+    MdButtonModule
   ],
+  entryComponents: [ Dialog ],
   providers: [LoginService, AppService, AuthenticationService, CanActivateRoute, TransactionHistoryService,
         ReceiptAccountService, PaymentAmountService, ReviewApproveService],
   bootstrap: [AppComponent]

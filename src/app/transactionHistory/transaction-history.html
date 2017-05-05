@@ -16,15 +16,15 @@
     </thead>
     <tbody>
         <tr *ngFor="let tr of transList">
-            <th>{{tr.trNo}}</th>
-            <th>{{tr.payAcc}}</th>
-            <th>{{tr.sentAmt}}</th>
+            <th>{{tr.transactionId}}</th>
+            <th>{{tr.payAccount}}</th>
+            <th>{{tr.sendAmt}}</th>
             <th>{{tr.rate}}</th>
-            <th>{{tr.recAccNum}}</th>
+            <th>{{tr.recAccount}}</th>
             <th>{{tr.recAmt}}</th>
             <th>{{tr.status}}</th>
             <th>{{tr.createdOn}}</th>
-            <th>{{tr.approveRejected}}</th>
+            <th>{{tr.approvedOn}}</th>
         </tr>
     </tbody>
 </table>

@@ -20,7 +20,7 @@
     <div class="form-group">
         <label for="amount" class="col-sm-2 control-label">Amount</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="amount" name="amount" #amount="ngModel" placeholder="Amount" [(ngModel)]="amt" required>
+            <input type="text" class="form-control" id="amount" name="amount" #amount="ngModel" placeholder="Amount" [(ngModel)]="amt" required pattern="^[0-9]+$" minlength=3 maxlength=5>
         </div>
     </div>
     <div class="form-group">
@@ -30,7 +30,7 @@
                 <option *ngFor="let c of ccys" [ngValue]="c">{{getKey(c)}}</option>
             </select>
             <div *ngIf="ccy">
-                Rate: $1 = {{getValue(ccy)}}
+                Rate: $1 = {{getValue(ccy)}}<span *ngIf="amount.valid">, Recipient amount: {{ amount.value * getValue(ccy)}} {{getKey(ccy)}}</span>
             </div>
         </div>
     </div>

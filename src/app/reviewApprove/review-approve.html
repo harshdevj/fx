@@ -17,16 +17,17 @@
     </thead>
     <tbody>
         <tr *ngFor="let tr of transList">
-            <th>{{tr.trNo}}</th>
-            <th>{{tr.payAcc}}</th>
-            <th>{{tr.sentAmt}}</th>
-            <th>{{tr.rate}}</th>
-            <th>{{tr.recAccNum}}</th>
-            <th>{{tr.recAmt}}</th>
-            <th>{{tr.status}}</th>
-            <th>{{tr.createdOn}}</th>
-            <th>{{tr.approveRejected}}</th>
-            <th class="approve-reject"><i class="material-icons approve" (click)="approve(tr)">thumb_up</i>&nbsp;&nbsp;&nbsp;<i class="material-icons reject" (click)="reject(tr)">thumb_down</i></th>
+            <td>{{tr.transactionId}}</td>
+            <td>{{tr.payAccount}}</td>
+            <td>{{tr.sendAmt}}</td>
+            <td>{{tr.rate}}</td>
+            <td>{{tr.recAccount}}</td>
+            <td>{{tr.recAmt}}</td>
+            <td>{{tr.status}}</td>
+            <td>{{tr.createdOn}}</td>
+            <td>{{tr.approvedOn}}</td>
+            <td *ngIf="tr.status !== 'NEW'">&nbsp;</td>
+            <td class="approve-reject" *ngIf="tr.status === 'NEW'"><i class="material-icons approve" (click)="approve(tr)">thumb_up</i>&nbsp;&nbsp;&nbsp;<i class="material-icons reject" (click)="reject(tr)">thumb_down</i></td>
         </tr>
     </tbody>
 </table>

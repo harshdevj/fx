@@ -9,19 +9,17 @@ export class ReceiptAccountService {
     }
 
     public getReceiptAccount() {
-        return this.http.get(`assets/receiptAccount.json`)
-            .map(resp => {
-                let json = resp.json();
-                return json;
-            });
+        return this.http.post('/fx/service/recipient/getAccounts', {})
+                .map(resp => {
+                    return resp.json();
+                });
     }
 
     addBankAcc(values) {
-        return this.http.post('addBankAcc', values)
-            .map(resp => {
-                let json = resp.json();
-                return json;
-            });
+        return this.http.post('/fx/service/recipient/addRecipient', {accountName: values.accName, accountNumber: values.accNum, accountType: values.accType, routingNumber: values.rNum})
+                .map(resp => {
+                    return resp.json();
+                });
     }
 
 }

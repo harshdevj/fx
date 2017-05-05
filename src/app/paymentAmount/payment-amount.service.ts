@@ -9,19 +9,17 @@ export class PaymentAmountService {
     }
 
     getPaymentAmount() {
-        return this.http.get(`assets/paymentAmount.json`)
-            .map(resp => {
-                let json = resp.json();
-                return json;
-            });
+        return this.http.post('/fx/service/payment/getPayments', {})
+                .map(resp => {
+                    return resp.json();
+                });
     }
 
     addPayBankAcc(values) {
-        return this.http.post('addPayBankAcc', values)
-            .map(resp => {
-                let json = resp.json();
-                return json;
-            });
+        return this.http.post('/fx/service/payment/addPayment', {accountName: values.accName, accountNumber: values.accNum, accountType: values.accType, routingNumber: values.rNum})
+                .map(resp => {
+                    return resp.json();
+                });
     }
 
 }

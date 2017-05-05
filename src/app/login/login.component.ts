@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as jQuery from 'jquery';
 import { AppService } from '../app.service';
 import { AuthenticationService } from '../common/authentication.service';
@@ -14,12 +14,16 @@ export class LoginComponent implements OnInit {
 
     eMail = '';
     pwd = '';
+    error = '';
 
     constructor(private appService: AppService, public auth: AuthenticationService, private router: Router) {
-        
     }
 
     ngOnInit() {
+        this.eMail = '';
+        this.pwd = '';
+        this.error = '';
+
         jQuery('input[type="submit"]').mousedown(function () {
             jQuery(this).css('background', '#2ecc71');
         });
@@ -41,14 +45,12 @@ export class LoginComponent implements OnInit {
                 registerContainer = jQuery(".register");
 
             if (!loginContainer.is(e.target)
-                && loginContainer.has(e.target).length === 0)
-            {
+                && loginContainer.has(e.target).length === 0) {
                 loginContainer.hide();
                 jQuery('#loginform').removeClass('green');
             }
             if (!registerContainer.is(e.target)
-                && registerContainer.has(e.target).length === 0)
-            {
+                && registerContainer.has(e.target).length === 0) {
                 registerContainer.hide();
                 jQuery('#registerform').removeClass('green');
             }
@@ -57,15 +59,28 @@ export class LoginComponent implements OnInit {
 
     login(email, password) {
         this.auth.login(email, password)
-        .subscribe(resp => {
-            this.eMail = '';
-            this.pwd = '';
-            this.toggleNav();
-        })
+            .subscribe(resp => {
+                //this.eMail = '';
+                //this.pwd = '';
+                if (resp.success) {
+                    this.toggleNav();
+                } else {
+                    this.error = resp.errorMessage;
+                }
+            });
     }
 
     register(fName, lName, rEmail, rPwd) {
-
+        this.auth.register(fName, lName, rEmail, rPwd)
+            .subscribe(resp => {
+                //this.eMail = '';
+                //this.pwd = '';
+                if (resp.success) {
+                    this.toggleNav();
+                } else {
+                    this.error = resp.errorMessage;
+                }
+            })
     }
 
     toggleNav() {

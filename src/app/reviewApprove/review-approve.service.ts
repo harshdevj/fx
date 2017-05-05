@@ -17,19 +17,17 @@ export class ReviewApproveService {
     }
 
     approve(rec) {
-        return this.http.post('assets/approveReject.json', rec)
-            .map(resp => {
-                let json = resp.json();
-                return json;
-            });
+        return this.http.post('/fx/service/money/approveTransaction', rec)
+                .map(resp => {
+                    return resp.json();
+                });
     }
 
     reject(rec) {
-        return this.http.post('assets/approveReject.json', rec)
-            .map(resp => {
-                let json = resp.json();
-                return json;
-            });
+        return this.http.post('/fx/service/money/rejectTransaction', rec)
+                .map(resp => {
+                    return resp.json();
+                });
     }
 
 }

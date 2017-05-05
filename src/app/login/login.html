@@ -9,7 +9,7 @@
                     <a href="javascript:void(0)" id="loginform">Login</a> | <a href="javascript:void(0)" id="registerform">Register</a>
                 </span>
                 <span *ngIf="auth.isUserLoggegIn" style="display: flex;align-items: center">
-                    <a href="javascript:void(0)" id="loginform">Welcome {{auth.userDetails.lastName}}, {{auth.userDetails.firstName}}</a><button md-icon-button (click)="auth.logout();appService.close();router.navigate(['/home'])" *ngIf="auth.isUserLoggegIn"><md-icon>exit_to_app</md-icon></button>
+                    <a href="javascript:void(0)" id="loginform">Welcome {{auth.userDetails.lastName}}, {{auth.userDetails.firstName}}</a><button md-icon-button (click)="error='';auth.logout();appService.close();router.navigate(['/home'])" *ngIf="auth.isUserLoggegIn"><md-icon>exit_to_app</md-icon></button>
                 </span>
             </h2>
             <div class="login" [style.display]="auth.isUserLoggegIn?'none':'block'">
@@ -25,6 +25,7 @@
                                 <input [disabled]="!loginForm.form.valid" [style.background]="loginForm.form.valid?'#1abc9c':'red'" type="submit" value="Login" />
                             </fieldset>
                         </form>
+                        <p>{{error}}</p>
                     </div>
                 </div>
             </div>
@@ -32,7 +33,7 @@
                 <div class="arrow-up"></div>
                 <div class="formholder">
                     <div class="randompad">
-                        <form #registerForm="ngForm" (ngSubmit)="register(fName.value, lName.value, rEmail.value, rPwd.value)">
+                        <form #registerForm="ngForm" (ngSubmit)="register(fname.value, lname.value, remail.value, rpwd.value)">
                             <fieldset>
                                 <label name="name">First Name</label>
                                 <input type="text" name="fname" #fname="ngModel" [(ngModel)]="fName" name="fname" value="" required />

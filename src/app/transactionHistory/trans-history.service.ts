@@ -9,11 +9,10 @@ export class TransactionHistoryService {
     }
 
     public getTransactionHistory() {
-        return this.http.get(`assets/transactionHistory.json`)
-            .map(resp => {
-                let json = resp.json();
-                return json;
-            });
+        return this.http.post('/fx/service/money/transactionHistory', {})
+                .map(resp => {
+                    return resp.json();
+                });
     }
 
 }

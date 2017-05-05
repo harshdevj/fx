@@ -5,7 +5,9 @@ import { Http } from '@angular/http';
 export class AuthenticationService {
 
     _isUserLoggegIn = false;
-    _userDetails = {};
+    _userDetails: any = {
+        entitlement: []
+    };
 
     public get isUserLoggegIn() {
         return this._isUserLoggegIn;
@@ -19,7 +21,7 @@ export class AuthenticationService {
     }
 
     public login(userName:string, password: string) {
-        return this.http.get(`assets/login.json?userName=${userName}&password=${password}`)
+        return this.http.post('/fx/service/user/login', {email: userName, userPwd: password})
                 .map(resp => {
                     let json = resp.json();
                     if (json.success) {
@@ -30,9 +32,18 @@ export class AuthenticationService {
                 });
     }
 
+    public register(fName, lName, rEmail, rPwd) {
+        return this.http.post('/fx/service/user/register', { email: rEmail, name: (fName + ' ' + lName), password: rPwd, userType: 'user' })
+                .map(resp => {
+                    return resp.json();
+                });
+    }
+
     public logout() {
         this._isUserLoggegIn = false;
-        this._userDetails = {};
+        this._userDetails = {
+            entitlement: []
+        };
     }
 
 }
