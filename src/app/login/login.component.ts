@@ -3,6 +3,8 @@ import * as jQuery from 'jquery';
 import { AppService } from '../app.service';
 import { AuthenticationService } from '../common/authentication.service';
 import { Router } from '@angular/router';
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { Dialog } from '../common/dialog.component';
 
 @Component({
     selector: 'login',
@@ -15,8 +17,9 @@ export class LoginComponent implements OnInit {
     eMail = '';
     pwd = '';
     error = '';
+    dialogRef: MdDialogRef<any>;
 
-    constructor(private appService: AppService, public auth: AuthenticationService, private router: Router) {
+    constructor(private appService: AppService, public auth: AuthenticationService, private router: Router, public dialog: MdDialog) {
     }
 
     ngOnInit() {
@@ -75,10 +78,15 @@ export class LoginComponent implements OnInit {
             .subscribe(resp => {
                 //this.eMail = '';
                 //this.pwd = '';
+                this.dialogRef = this.dialog.open(Dialog);
                 if (resp.success) {
-                    this.toggleNav();
+                    this.dialogRef.componentInstance.title = "Success";
+                    this.dialogRef.componentInstance.message = "You have been registered successfully!";
+                    this.dialogRef.componentInstance.isInfo = true;
                 } else {
-                    this.error = resp.errorMessage;
+                    this.dialogRef.componentInstance.title = "Error";
+                    this.dialogRef.componentInstance.message = resp.errorMessage;
+                    this.dialogRef.componentInstance.isInfo = true;
                 }
             })
     }

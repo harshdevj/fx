@@ -33,7 +33,7 @@ export class AuthenticationService {
     }
 
     public register(fName, lName, rEmail, rPwd) {
-        return this.http.post('/fx/service/user/register', { email: rEmail, name: (fName + ' ' + lName), password: rPwd, userType: 'user' })
+        return this.http.post('/fx/service/user/register', { email: rEmail, userName: (fName + ' ' + lName), userPwd: rPwd, role: 'user' })
                 .map(resp => {
                     return resp.json();
                 });
